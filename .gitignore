@@ -1,3 +1,8 @@
+### Custom ###
+# Python Environment
+env
+*.code-workspace
+.vscode
 
 # Created by https://www.gitignore.io/api/latex,python
 # Edit at https://www.gitignore.io/?templates=latex,python
