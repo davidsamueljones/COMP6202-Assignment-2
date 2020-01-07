@@ -33,10 +33,10 @@ from utils import seed_random
 
 def run():
     plotter = Plotter(show_avgs=True, plot_elites=False)
-    fig_1 = 0
-    fig_2 = 0
-    fig_3 = 0
-    fig_4 = 0
+    fig_1 = 1
+    fig_2 = 1
+    fig_3 = 1
+    fig_4 = 1
     fig_5 = 1
     extension = 1
 
@@ -73,7 +73,7 @@ def run():
         plotter.make_plot(
             executor,
             fig_name=description,
-            export_path=os.path.join(export_folder, "fig1.pdf"),
+            export_path=os.path.join(export_folder, "fig1.png"),
         )
 
     if fig_2:
@@ -87,7 +87,7 @@ def run():
         plotter.make_plot(
             executor,
             fig_name=description,
-            export_path=os.path.join(export_folder, "fig2.pdf"),
+            export_path=os.path.join(export_folder, "fig2.png"),
         )
 
     if fig_3:
@@ -103,7 +103,7 @@ def run():
         plotter.make_plot(
             executor,
             fig_name=description,
-            export_path=os.path.join(export_folder, "fig3.pdf"),
+            export_path=os.path.join(export_folder, "fig3.png"),
         )
 
     if fig_4:
@@ -117,7 +117,7 @@ def run():
         plotter.make_plot(
             executor,
             fig_name=description,
-            export_path=os.path.join(export_folder, "fig4.pdf"),
+            export_path=os.path.join(export_folder, "fig4.png"),
         )
 
     if fig_5:
@@ -136,7 +136,7 @@ def run():
         plotter.make_plot(
             executor,
             fig_name=description,
-            export_path=os.path.join(export_folder, "fig5.pdf"),
+            export_path=os.path.join(export_folder, "fig5.png"),
         )
 
     if extension:
@@ -149,7 +149,7 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.5]",
-                "fig_5_v0.5.pdf",
+                "fig_5_v0.5.png",
                 VirulenceSelector(fp_selector, 0.5),
                 False,
             )
@@ -157,7 +157,7 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.75]",
-                "fig_5_v0.75.pdf",
+                "fig_5_v0.75.png",
                 VirulenceSelector(fp_selector, 0.75),
                 False,
             )
@@ -165,7 +165,7 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.75] + SUS",
-                "fig_5_v0.75_sus.pdf",
+                "fig_5_v0.75_sus.png",
                 VirulenceSelector(sus_selector, 0.75),
                 False,
             )
@@ -173,7 +173,7 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.75] + TS",
-                "fig_5_v0.75_ts.pdf",
+                "fig_5_v0.75_ts.png",
                 VirulenceSelector(t_selector, 0.75),
                 False,
             )
@@ -181,7 +181,7 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.75] + SUS + HOF",
-                "fig_5_v0.75_sus_hof.pdf",
+                "fig_5_v0.75_sus_hof.png",
                 VirulenceSelector(sus_selector, 0.75),
                 True,
             )
@@ -189,12 +189,12 @@ def run():
         ext_cfgs += [
             (
                 "Virulence [0.75] + HOF",
-                "fig_5_v0.75_hof.pdf",
+                "fig_5_v0.75_hof.png",
                 VirulenceSelector(fp_selector, 0.75),
                 True,
             )
         ]
-        ext_cfgs += [("HOF", "fig_5_hof.pdf", fp_selector, True)]
+        ext_cfgs += [("HOF", "fig_5_hof.png", fp_selector, True)]
         for (cfg_txt, export_name, selector, use_hof) in ext_cfgs:
             seed = seed_random(8985012493578745191, use_fixed_seed)
             description = "Figure 5 - {} : [Seed {}]".format(cfg_txt, seed)

@@ -113,7 +113,7 @@ class Plotter:
             folder_path = "/".join(export_path.split("/")[0:-1])
             if folder_path and not os.path.exists(folder_path):
                 os.makedirs(folder_path)
-            fig.savefig(export_path, bbox_inches="tight")
+            fig.savefig(export_path, bbox_inches="tight", dpi=300)
         return fig
 
     def plot_elites(self, fig_name: str, pops: List[Population]):
