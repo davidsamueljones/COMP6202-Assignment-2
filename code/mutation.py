@@ -1,3 +1,9 @@
+"""COMP6202 - Evolution of Complexity
+Holds mutation class for mutating an individual.
+"""
+
+__authors__ = "David Jones <dsj1n15@ecs.soton.ac.uk>"
+
 import copy
 import random
 

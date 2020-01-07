@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+"""COMP6202 - Evolution of Complexity
+
+Holds individual representation and population holder.
+"""
+
 from collections import UserList
 from typing import List, Tuple
 

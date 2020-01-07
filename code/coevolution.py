@@ -14,14 +14,14 @@ from typing import List, Tuple
 from representation import Population, Individual
 from mutation import Mutator
 from scoring import Scorer
-from selection import Selector
+from selection import Selector, FitnessProportionateSelection
 
 
 class Coevolution:
     def __init__(
         self,
         scorer: Scorer = Scorer(intransitive=False),
-        selector: Selector = Selector(),
+        selector: Selector = FitnessProportionateSelection(),
         mutator: Mutator = Mutator(),
         hof: HOF = None,
     ):
@@ -65,11 +65,13 @@ class Coevolution:
     def assess_fitness(
         self, pop_a: Population, pop_b: Population
     ) -> Tuple[List[float], List[float]]:
-        pop_ab = self._assess_fitness(pop_a, pop_b, self.hof_b)
-        pop_ba = self._assess_fitness(pop_b, pop_a, self.hof_a)
+        pop_ab = self._assess_fitness(pop_a, pop_b, self.hof_a)
+        pop_ba = self._assess_fitness(pop_b, pop_a, self.hof_b)
         return (pop_ab, pop_ba)
 
-    def _assess_fitness(self, pop: Population, opponents: Population, hof: HOF = None):
+    def _assess_fitness(
+        self, pop: Population, opponents: Population, hof: HOF = None
+    ) -> List[float]:
         pop_scores = []
         for i in pop:
             score = self.scorer.subj_fitness(i, opponents)

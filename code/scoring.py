@@ -12,8 +12,9 @@ from representation import Population, Individual
 
 
 class Scorer:
-    """Scorer that implements `score2` and `score3` from 
+    """Scorer that implements `score2` and `score3`.
     """
+
     def __init__(self, sample_size: int = 15, intransitive: bool = False):
         if intransitive:
             self.op = operator.lt
@@ -47,6 +48,8 @@ class Scorer:
             List[int]: The individual score against each selected individual
                 in the population. This will be a list of length sample size.
         """
+        if len(pop) == 0:
+            return []
         # Allow repeats, same as applet
         pop = random.choices(pop, k=self.sample_size)
         return list(map(lambda b: self.score(a, b), pop))
@@ -55,5 +58,6 @@ class Scorer:
 class F0Scorer(Scorer):
     """Scorer that always returns 0 for subjective score (Experiment 0).
     """
+
     def subj_fitness(self, *args) -> int:
         return 0
